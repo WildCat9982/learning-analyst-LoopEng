@@ -1,0 +1,168 @@
+{
+  "id": "837471a0",
+  "trigger": "capstone_evaluation",
+  "ticket_key": "LEARNING",
+  "requirement_page_id": null,
+  "requirement_version": 1,
+  "model": "gpt-5.6-luna",
+  "workspace": "/home/jovyan/work/capstone/data/capstone/candidates/cfe6d03751722/evaluation/workspaces/report-export.md",
+  "requirement_doc": "REQUIREMENT: Report Export\nUsers can download the records shown in a report as a CSV file.\nThe export must respect the user\u2019s current filters and access permissions.\nInclude a header row with the column names.\nLarge exports should run in the background so the user can continue working.\nNotify the user when the file is ready.\nDownload links should remain available for a reasonable time.\nIf an export fails, explain what happened and let the user try again.\n",
+  "instructions": "## Procedure\nFetch the requirement using fetch_requirement. Write /analysis.md, then edit each section in order: Confirmed Facts, Ambiguities, Clarification Questions, Assumptions, Summary. Use level-2 headings and one bullet per item. Quote each ambiguous clause and explain the problem. Finish with a short summary.\n\n## Review guidance\n### Confirmed Facts\nList what the requirement tells the team to build.\n### Ambiguities\nIdentify wording that different readers could interpret differently. Keep the analysis focused and easy to read.\n### Clarification Questions\nAsk questions that would help the team proceed.\n### Assumptions\nRecord any assumptions separately.\n### Summary\nSummarize the remaining decisions in two sentences.\n\nFor every ambiguity and clarification question, identify the decision owner or authoritative source that can resolve it (for example, product, security, compliance, or an applicable policy).\n",
+  "trace": [
+    {
+      "step": 1,
+      "actor": "Agent action",
+      "action": "fetch_requirement {'ticket_key': 'UPL-310'}"
+    },
+    {
+      "step": 2,
+      "actor": "Tool",
+      "action": "fetch_requirement",
+      "detail": "REQUIREMENT: Report Export Users can download the records shown in a report as a CSV file. The export must respect the user\u2019s current filters and access permissions. Include a header row with the column names. Large expo\u2026"
+    },
+    {
+      "step": 3,
+      "actor": "Agent action",
+      "action": "write_file {'file_path': '/analysis.md', 'content': '## Confirmed Facts\\n- Users can download the records shown in a report as a CSV file.\\n- The export respects the user\u2019s current filters and access permissions.\\n- The CSV includes a header row with column names.\\n- Large exports run in the background so the user can continue working.\\n- The user is notified when the file is ready.\\n- Download links remain available for a reasonable time.\\n- If an export fails, the user receives an explanation and can try again.\\n\\n## Ambiguities\\n- \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\\n- \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\\n- \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\\n- \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\\n- \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\\n- \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\\n- \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\\n- \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\\n\\n## Clarification Questions\\n- Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\\n- Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\\n- At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\\n- What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\\n- How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\\n- How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\\n- What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\\n- What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.\\n\\n## Assumptions\\n- The export is initiated from an existing report and uses that report\u2019s applicable filter state.\\n- The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\\n- Authorization is enforced server-side and no unauthorized records are included in generated files.\\n- A background job provides status tracking and a retriable failure state.\\n- Download links are authenticated, access-controlled, and expire after a configured retention period.\\n- The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.\\n\\n## Summary\\nThe requirement establishes an authorized, filter-aware CSV export with asynchronous processing, readiness notification, expiring access, and retryable failure handling. Product, engineering, security, and compliance still need to decide export scope, snapshot and authorization timing, large-export thresholds, notification UX, CSV rules, retention, and error behavior.\\n'}"
+    },
+    {
+      "step": 4,
+      "actor": "Tool",
+      "action": "write_file",
+      "detail": "Updated file /analysis.md"
+    },
+    {
+      "step": 5,
+      "actor": "Agent action",
+      "action": "Analysis completed and saved to `/analysis.md`, covering confirmed facts, ambiguities, clarification questions, assumptions, and summary for ticket UPL-310."
+    }
+  ],
+  "messages": [
+    {
+      "type": "human",
+      "content": "The requirement is tracked as ticket UPL-310; fetch it to begin."
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "tool_calls": [
+        {
+          "name": "fetch_requirement",
+          "args": {
+            "ticket_key": "UPL-310"
+          },
+          "id": "call_fOyvjYuor9lMzHyFINyBGqX5",
+          "type": "tool_call"
+        }
+      ],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 3409,
+        "output_tokens": 21,
+        "total_tokens": 3430
+      }
+    },
+    {
+      "type": "tool",
+      "content": "REQUIREMENT: Report Export\nUsers can download the records shown in a report as a CSV file.\nThe export must respect the user\u2019s current filters and access permissions.\nInclude a header row with the column names.\nLarge exports should run in the background so the user can continue working.\nNotify the user when the file is ready.\nDownload links should remain available for a reasonable time.\nIf an export fails, explain what happened and let the user try again.\n",
+      "tool_call_id": "call_fOyvjYuor9lMzHyFINyBGqX5",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "tool_calls": [
+        {
+          "name": "write_file",
+          "args": {
+            "file_path": "/analysis.md",
+            "content": "## Confirmed Facts\n- Users can download the records shown in a report as a CSV file.\n- The export respects the user\u2019s current filters and access permissions.\n- The CSV includes a header row with column names.\n- Large exports run in the background so the user can continue working.\n- The user is notified when the file is ready.\n- Download links remain available for a reasonable time.\n- If an export fails, the user receives an explanation and can try again.\n\n## Ambiguities\n- \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\n- \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\n- \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\n- \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\n- \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\n- \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\n- \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\n- \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\n\n## Clarification Questions\n- Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\n- Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\n- At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\n- What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\n- How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\n- How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\n- What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\n- What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.\n\n## Assumptions\n- The export is initiated from an existing report and uses that report\u2019s applicable filter state.\n- The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\n- Authorization is enforced server-side and no unauthorized records are included in generated files.\n- A background job provides status tracking and a retriable failure state.\n- Download links are authenticated, access-controlled, and expire after a configured retention period.\n- The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.\n\n## Summary\nThe requirement establishes an authorized, filter-aware CSV export with asynchronous processing, readiness notification, expiring access, and retryable failure handling. Product, engineering, security, and compliance still need to decide export scope, snapshot and authorization timing, large-export thresholds, notification UX, CSV rules, retention, and error behavior.\n"
+          },
+          "id": "call_AKa4iTw0TNdCxLV0WuHsVvij",
+          "type": "tool_call"
+        }
+      ],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 3532,
+        "output_tokens": 833,
+        "total_tokens": 4365
+      }
+    },
+    {
+      "type": "tool",
+      "content": "Updated file /analysis.md",
+      "tool_call_id": "call_AKa4iTw0TNdCxLV0WuHsVvij",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "Analysis completed and saved to `/analysis.md`, covering confirmed facts, ambiguities, clarification questions, assumptions, and summary for ticket UPL-310.",
+      "tool_calls": [],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 4381,
+        "output_tokens": 33,
+        "total_tokens": 4414
+      }
+    }
+  ],
+  "grading": [
+    {
+      "iteration": 1,
+      "result": "satisfied",
+      "explanation": "All criteria passed",
+      "criteria": [
+        {
+          "name": "completeness",
+          "passed": true,
+          "evidence": "L1: ## Confirmed Facts\nL10: ## Ambiguities\nL20: ## Clarification Questions\nL30: ## Assumptions\nL38: ## Summary",
+          "gap": ""
+        },
+        {
+          "name": "clarity",
+          "passed": true,
+          "evidence": "L11: - \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\nL12: - \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\nL13: - \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\nL14: - \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\nL15: - \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\nL16: - \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\nL17: - \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\nL18: - \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\nL21: - Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\nL22: - Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\nL23: - At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\nL24: - What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\nL25: - How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\nL26: - How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\nL27: - What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\nL28: - What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.",
+          "gap": ""
+        },
+        {
+          "name": "depth",
+          "passed": true,
+          "evidence": "L2: - Users can download the records shown in a report as a CSV file.\nL3: - The export respects the user\u2019s current filters and access permissions.\nL4: - The CSV includes a header row with column names.\nL5: - Large exports run in the background so the user can continue working.\nL6: - The user is notified when the file is ready.\nL7: - Download links remain available for a reasonable time.\nL8: - If an export fails, the user receives an explanation and can try again.\nL11: - \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\nL12: - \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\nL13: - \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\nL14: - \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\nL15: - \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\nL16: - \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\nL17: - \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\nL18: - \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\nL31: - The export is initiated from an existing report and uses that report\u2019s applicable filter state.\nL32: - The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\nL33: - Authorization is enforced server-side and no unauthorized records are included in generated files.\nL34: - A background job provides status tracking and a retriable failure state.\nL35: - Download links are authenticated, access-controlled, and expire after a configured retention period.\nL36: - The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.",
+          "gap": ""
+        }
+      ],
+      "analysis_markdown": "## Confirmed Facts\n- Users can download the records shown in a report as a CSV file.\n- The export respects the user\u2019s current filters and access permissions.\n- The CSV includes a header row with column names.\n- Large exports run in the background so the user can continue working.\n- The user is notified when the file is ready.\n- Download links remain available for a reasonable time.\n- If an export fails, the user receives an explanation and can try again.\n\n## Ambiguities\n- \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\n- \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\n- \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\n- \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\n- \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\n- \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\n- \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\n- \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\n\n## Clarification Questions\n- Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\n- Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\n- At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\n- What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\n- How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\n- How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\n- What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\n- What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.\n\n## Assumptions\n- The export is initiated from an existing report and uses that report\u2019s applicable filter state.\n- The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\n- Authorization is enforced server-side and no unauthorized records are included in generated files.\n- A background job provides status tracking and a retriable failure state.\n- Download links are authenticated, access-controlled, and expire after a configured retention period.\n- The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.\n\n## Summary\nThe requirement establishes an authorized, filter-aware CSV export with asynchronous processing, readiness notification, expiring access, and retryable failure handling. Product, engineering, security, and compliance still need to decide export scope, snapshot and authorization timing, large-export thresholds, notification UX, CSV rules, retention, and error behavior.\n",
+      "tool_calls": [
+        {
+          "name": "read_file",
+          "args": {
+            "file_path": "/analysis.md"
+          },
+          "result": "## Confirmed Facts\n- Users can download the records shown in a report as a CSV file.\n- The export respects the user\u2019s current filters and access permissions.\n- The CSV includes a header row with column names.\n- Large exports run in the background so the user can continue working.\n- The user is notified when the file is ready.\n- Download links remain available for a reasonable time.\n- If an export fails, the user receives an explanation and can try again.\n\n## Ambiguities\n- \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\n- \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\n- \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\n- \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\n- \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\n- \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\n- \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\n- \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\n\n## Clarification Questions\n- Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\n- Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\n- At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\n- What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\n- How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\n- How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\n- What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\n- What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.\n\n## Assumptions\n- The export is initiated from an existing report and uses that report\u2019s applicable filter state.\n- The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\n- Authorization is enforced server-side and no unauthorized records are included in generated files.\n- A background job provides status tracking and a retriable failure state.\n- Download links are authenticated, access-controlled, and expire after a configured retention period.\n- The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.\n\n## Summary\nThe requirement establishes an authorized, filter-aware CSV export with asynchronous processing, readiness notification, expiring access, and retryable failure handling. Product, engineering, security, and compliance still need to decide export scope, snapshot and authorization timing, large-export thresholds, notification UX, CSV rules, retention, and error behavior.\n"
+        }
+      ]
+    }
+  ],
+  "analysis_markdown": "## Confirmed Facts\n- Users can download the records shown in a report as a CSV file.\n- The export respects the user\u2019s current filters and access permissions.\n- The CSV includes a header row with column names.\n- Large exports run in the background so the user can continue working.\n- The user is notified when the file is ready.\n- Download links remain available for a reasonable time.\n- If an export fails, the user receives an explanation and can try again.\n\n## Ambiguities\n- \u201crecords shown in a report\u201d could mean only the currently visible page or all records matching the report query; the product owner should define the export scope.\n- \u201ccurrent filters\u201d does not specify whether filters are captured at export initiation or reevaluated while the background job runs; product and engineering should define the snapshot behavior.\n- \u201caccess permissions\u201d does not specify whether permissions are checked only when the export starts or again when the file is generated/downloaded; security should define the enforcement points.\n- \u201cLarge exports\u201d has no size or processing-time threshold; product and engineering should establish the threshold and expected behavior for smaller exports.\n- \u201cNotify the user\u201d does not specify the notification channel, delivery guarantees, or notification contents; product should decide the UX, with security/privacy reviewing exposed details.\n- \u201creasonable time\u201d is undefined; product and compliance/security should specify link expiration, retention, and whether links are revocable.\n- \u201cexplain what happened\u201d does not define the error detail level or whether sensitive implementation details must be suppressed; product and security should define the user-facing error policy.\n- \u201cCSV file\u201d does not specify encoding, delimiter, quoting/escaping, treatment of nulls and special values, or protection against formula injection; engineering and security should define the format and safeguards.\n\n## Clarification Questions\n- Should an export include all records matching the report filters, or only records on the currently displayed page? Decision owner: product.\n- Are filters and report configuration snapshotted when the user starts the export? Decision owner: product, with engineering input.\n- At which points must authorization be revalidated: job creation, record retrieval, file generation, and/or download? Decision owner: security/compliance.\n- What record count, file size, or estimated duration qualifies as a large export? Decision owner: product and engineering.\n- How should users be notified that an export is ready\u2014for example, in-app notification, email, or both\u2014and what happens if delivery fails? Decision owner: product.\n- How long should generated files and download links be retained, and can users revoke them? Decision owner: product, security, and compliance.\n- What CSV specification is required, including encoding, delimiter, quoting, null values, line endings, and formula-injection protections? Decision owner: engineering and security.\n- What user-facing error categories and retry behavior are required, and should partial files ever be offered? Decision owner: product and engineering.\n\n## Assumptions\n- The export is initiated from an existing report and uses that report\u2019s applicable filter state.\n- The export contains all authorized records in the report result, rather than only the visible page; this remains to be confirmed by product.\n- Authorization is enforced server-side and no unauthorized records are included in generated files.\n- A background job provides status tracking and a retriable failure state.\n- Download links are authenticated, access-controlled, and expire after a configured retention period.\n- The CSV uses a conventional interoperable encoding and safely escapes values; exact rules remain to be confirmed.\n\n## Summary\nThe requirement establishes an authorized, filter-aware CSV export with asynchronous processing, readiness notification, expiring access, and retryable failure handling. Product, engineering, security, and compliance still need to decide export scope, snapshot and authorization timing, large-export thresholds, notification UX, CSV rules, retention, and error behavior.\n",
+  "status": "satisfied",
+  "turns": 3,
+  "counts": {
+    "Confirmed Facts": 7,
+    "Ambiguities": 8,
+    "Clarification Questions": 8,
+    "Assumptions": 6
+  },
+  "started_at": "2026-10-31T10:56:59.302297+00:00",
+  "finished_at": "2026-10-31T10:57:15.778034+00:00",
+  "duration_ms": 16476,
+  "execution_mode": "live",
+  "label": "evaluation",
+  "doc_name": "report-export.md"
+}

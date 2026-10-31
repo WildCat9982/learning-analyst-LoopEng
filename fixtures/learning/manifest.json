@@ -1,0 +1,13 @@
+{
+  "practice": [
+    "practice/avatar-upload.md",
+    "practice/password-reset.md",
+    "practice/notifications.md",
+    "practice/team-invitations.md",
+    "practice/report-export.md"
+  ],
+  "new": [
+    "new/data-export.md",
+    "new/search.md"
+  ]
+}

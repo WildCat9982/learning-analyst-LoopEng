@@ -1,0 +1,107 @@
+{
+  "complete": true,
+  "qualifies": true,
+  "no_decline": true,
+  "before": {
+    "completeness": 5,
+    "clarity": 3,
+    "depth": 4
+  },
+  "after": {
+    "completeness": 5,
+    "clarity": 5,
+    "depth": 5
+  },
+  "passed": [
+    12,
+    15
+  ],
+  "total": 15,
+  "change_percentage_points": 20.0,
+  "rows": [
+    {
+      "document": "avatar-upload.md",
+      "title": "Avatar Upload",
+      "before": {
+        "completeness": true,
+        "clarity": false,
+        "depth": true
+      },
+      "after": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "before_run": "48198fd9",
+      "after_run": "6e2282c0"
+    },
+    {
+      "document": "password-reset.md",
+      "title": "Password Reset",
+      "before": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "after": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "before_run": "6407faea",
+      "after_run": "47e57f17"
+    },
+    {
+      "document": "notifications.md",
+      "title": "Notifications",
+      "before": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "after": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "before_run": "cdd4d55e",
+      "after_run": "cfcd3235"
+    },
+    {
+      "document": "team-invitations.md",
+      "title": "Team Invitations",
+      "before": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "after": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "before_run": "7db9930b",
+      "after_run": "e63de221"
+    },
+    {
+      "document": "report-export.md",
+      "title": "Report Export",
+      "before": {
+        "completeness": true,
+        "clarity": false,
+        "depth": false
+      },
+      "after": {
+        "completeness": true,
+        "clarity": true,
+        "depth": true
+      },
+      "before_run": "a7942198",
+      "after_run": "837471a0"
+    }
+  ],
+  "valid_after": 5,
+  "outcome_points": 50,
+  "errors": [],
+  "status": "Result target met"
+}

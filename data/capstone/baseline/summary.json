@@ -1,0 +1,10 @@
+{
+  "counts": {
+    "completeness": 5,
+    "clarity": 3,
+    "depth": 4
+  },
+  "passed": 12,
+  "valid": 5,
+  "complete": true
+}

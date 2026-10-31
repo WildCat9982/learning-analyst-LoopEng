@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "proposal": {
+    "decision": "propose",
+    "explanation": "Two independent reports identify the same clarity issue: ambiguity analysis and clarification questions do not name the authority that resolves decisions. This criterion failed for avatar-upload.md and report-export.md, while password-reset.md demonstrates that the broader section structure can otherwise satisfy evaluation; the safe recurring improvement is to require a decision owner or authoritative source for each unresolved item.",
+    "evidence_ids": [
+      "48198fd9:clarity",
+      "a7942198:clarity",
+      "6407faea:clarity"
+    ],
+    "evidence": [
+      {
+        "id": "48198fd9:clarity",
+        "run_id": "48198fd9",
+        "criterion": "clarity",
+        "passed": false,
+        "quote": "The ambiguities and questions identify most missing decisions and concrete options, but they do not consistently identify who or what can settle each ambiguity. In particular, the format, security, and replacement decisions lack an explicit decision owner or authoritative source."
+      },
+      {
+        "id": "a7942198:clarity",
+        "run_id": "a7942198",
+        "criterion": "clarity",
+        "passed": false,
+        "quote": "The clarification questions generally identify the missing decisions and relevant clauses, but several do not name who or what has authority to settle them. For example, the questions about dataset scope, snapshot timing, thresholds, notifications, retention, failures, retries, and limits do not identify the product owner, security owner, compliance policy, or other decision-maker. The ambiguity entries likewise identify the uncertainties but not who or what can resolve them."
+      },
+      {
+        "id": "6407faea:clarity",
+        "run_id": "6407faea",
+        "criterion": "clarity",
+        "passed": true,
+        "quote": "L10: - \u201cUsers\u201d is not scoped: it is unclear whether this includes all account types, disabled accounts, unverified accounts, or only active accounts.\nL11: - \u201cby email\u201d does not specify the request interface, delivery provider, email contents, or behavior when the address is unknown.\nL12: - \u201cused only once\u201d does not define whether a link is consumed on page visit, reset submission, or only after a successful password change.\nL13: - \u201ca reasonable time\u201d has no explicit expiration duration or timezone/clock policy.\nL14: - \u201cThe existing password remains valid until the reset succeeds\u201d does not define what happens after token expiration, failed attempts, or partial/reset failures.\nL15: - \u201cHandle repeated requests appropriately\u201d does not specify whether earlier links are invalidated, whether all valid links remain usable, rate limits, notification behavior, or the expected response to repeated requests.\nL18: - What account types may request a reset, and should disabled, unverified, or nonexistent accounts receive the same response?\nL19: - What is the reset-request endpoint or UI flow, and should requests for unknown email addresses return an indistinguishable response?\nL20: - How long should reset links remain valid (for example, 30 or 60 minutes)?\nL21: - Should a newer reset request invalidate all previously issued links for that account, or should each unexpired link remain usable?\nL22: - When exactly is a link consumed, and should failed password validation or failed reset attempts preserve it?\nL25: - What rate limits, cooldowns, audit events, and email notifications are required for repeated requests?\nL26: - What should happen if email delivery fails or the reset is attempted after expiration?"
+      }
+    ],
+    "evidence_scope": "possible_pattern",
+    "target": "prompt",
+    "section": "## Review guidance",
+    "change": "For every ambiguity and clarification question, identify the decision owner or authoritative source that can resolve it (for example, product, security, compliance, or an applicable policy).",
+    "source_path": "capstone/candidates/cfe6d03751722/analyst-attempts/c0b8222fbc794137be73f2187ba64299.py",
+    "source_sha256": "a1c41661a604048f0306441624bc0c743e9984a4833f7e209ed8b391c5906b3c",
+    "timestamp": "2026-10-31T10:40:15.895888+00:00"
+  }
+}

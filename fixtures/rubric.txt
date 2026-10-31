@@ -1,0 +1,3 @@
+- completeness: every clause addressed
+- clarity: every ambiguity has a Resolved by line
+- depth: every ambiguity has an Edge case line

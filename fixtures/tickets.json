@@ -1,0 +1,8 @@
+{
+  "UPL-310": "REQUIREMENT: Profile Avatar Upload\nUsers shall be able to upload an avatar image to their profile.\nUploaded images must be stored securely.\nThe feature should accept all common image formats.\n",
+  "SESS-101": "REQUIREMENT: Session Timeout\nSessions shall expire after a reasonable period of inactivity.\nUsers must be warned before expiry.\nExpired sessions should be handled appropriately.\nThe system shall log every expiry.\n",
+  "EXP-202": "REQUIREMENT: Report Export\nUsers shall be able to export reports.\nExports must complete quickly.\nExported files should use common formats.\nThe system shall record each export.\n",
+  "RATE-303": "REQUIREMENT: API Rate Limiting\nThe API shall limit request rates per client.\nLimits must be sensible for normal usage.\nClients exceeding limits should be notified appropriately.\nThe system shall record rejected requests.\n",
+  "AUD-404": "REQUIREMENT: Audit Logging\nThe system shall log privileged actions.\nLogs must be retained for a reasonable period.\nLogs should be searchable easily.\nLog access shall itself be logged.\n",
+  "SRCH-505": "REQUIREMENT: Search\nSearch shall return matching items.\nResults must load quickly.\nCommon misspellings should be tolerated.\nThe system shall record search queries.\n"
+}

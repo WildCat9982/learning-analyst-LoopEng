@@ -1,0 +1,15 @@
+{
+  "mode": "live",
+  "review_model": "gpt-5.6-luna",
+  "grader_model": "gpt-5.6-luna",
+  "budget": 3,
+  "cap": 40,
+  "rubric_sha256": "484330b63e33bd97f6b8c2fc7cca9d94dbf4f3246aeb88b9a218a78946b67fe6",
+  "documents": {
+    "avatar-upload.md": "e4cda89aea5b9c312ccf5f845e95bb6a4a36f08b51930819b6ac368f26b43531",
+    "password-reset.md": "d6e4316f90cfbc19e2bcc5af48609ebdcdee568f63ff995aa516f9588dbfe889",
+    "notifications.md": "1b7caf6139b3a38e53d32b3356854124f05ae57cd836a6be41d8a70f8b6f820e",
+    "team-invitations.md": "7748755127e88496254be2cc95adc3ffe563e3152e8b386bfc5e6f1176d2a57b",
+    "report-export.md": "878d3c634363f5f08b6d276809c0d37cf51a2a02c1d72a469c68cf652830e063"
+  }
+}

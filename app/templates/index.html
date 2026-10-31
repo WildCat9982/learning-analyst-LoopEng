@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LoopEng Learning Loop</title><link rel="stylesheet" href="static/style.css"><script src="static/app.js" defer></script></head>
+<body>
+<header class="capstone-header"><a href=".">LoopEng AI Coding Lab</a><span>Learning Loop · GPT-5.6 Luna</span></header>
+<main class="capstone-main">
+<p class="eyebrow">LEARN FROM THE LAST RUN. IMPROVE THE NEXT ONE.</p>
+<h1>Build your learning analyst.</h1>
+<p class="intro">Look for patterns in saved reviews, suggest better instructions, and compare what happens after your decision.</p>
+<nav class="progress-strip" aria-label="Sections"><a href="#build" data-step="build">1 Build</a><a href="#run" data-step="run">2 Analyse</a><a href="#decide" data-step="decide">3 Decide</a><a href="#compare" data-step="compare">4 Compare</a></nav>
+<div id="message" role="alert" hidden></div>
+
+<details class="step-card" id="build" open>
+<summary><span>1</span> Build your analyst <small id="build-status">Start in Coding chat</small></summary>
+<div class="step-body">
+<p><strong>What to do</strong> Ask the coding assistant to help build your analyst in <code>app/learning_agent.py</code>. Use your own words.</p>
+<details class="help-disclosure"><summary>Need a starting prompt?</summary><p>Try asking: “Help me build the analyst. It should look at past reviews and suggest better instructions for the task agent.”</p></details>
+<p class="muted">Optional: open Files → spec.coding-agent-lab.md to read the task the assistant is working from.</p>
+<p><strong>What to look for</strong> Examples from different requirements support its recommendation.</p>
+<p><strong>Done when</strong> The analyst passes its checks and the app is running.</p>
+</div></details>
+
+<details class="step-card" id="run" open>
+<summary><span>2</span> Run the analysis <small id="run-status">Not run</small></summary>
+<div class="step-body">
+<p><strong>What to do</strong> The task agent reviews five requirements. Your analyst then studies the saved reports, traces and feedback.</p>
+<details id="requirements-disclosure"><summary>View the five requirements</summary><div id="requirements"></div></details>
+<button id="analyse">Run analysis</button>
+<p id="build-needed" class="muted">Build your analyst in Step 1 to continue.</p>
+<div id="analysis-progress" class="operation-status" role="status" aria-live="polite" hidden></div>
+<div id="analysis-controls"></div>
+<p class="muted">Each review allows up to 3 revisions and 40 model calls.</p>
+<p><strong>What to look for</strong> Inspect the results and supporting reports before reviewing the suggestion.</p>
+<p><strong>Done when</strong> The analysis is complete and a recommendation is saved.</p>
+<div id="baseline"></div>
+<section aria-label="Review criteria"><h3>Review criteria</h3>
+<dl class="criteria-guide">
+<dt>Completeness</dt><dd>Every requirement clause is addressed in five nonempty sections, in the required order. Missing decisions are left open.</dd>
+<dt>Clarity</dt><dd>Questions name the relevant clause and ask for a concrete decision or measurable boundary. Each ambiguity identifies who or what can resolve it.</dd>
+<dt>Depth</dt><dd>Facts come from the requirement; proposed details are questions or assumptions. Each ambiguity includes a relevant boundary or failure scenario.</dd>
+</dl>
+<details id="criteria-guide"><summary>Full review criteria</summary><ul><li>completeness: All requirement clauses are addressed in five nonempty level-2 sections, in order: Confirmed Facts, Ambiguities, Clarification Questions, Assumptions, Summary. No missing requirement is silently treated as settled.</li><li>clarity: Questions name the missing decision and the relevant clause, asking for concrete choices or measurable boundaries. Merely asking what &quot;reasonable&quot;, &quot;common&quot;, or &quot;secure&quot; means is insufficient. Each ambiguity identifies who or what can settle it; labels alone are insufficient.</li><li>depth: Confirmed Facts contain only information stated in the requirement. Proposed numbers, policies, formats, or implementations are explicitly questions or assumptions, never invented facts. Each ambiguity includes a relevant concrete boundary/failure scenario; generic boilerplate is insufficient.</li></ul>
+<p class="muted">The required sections are Confirmed Facts, Ambiguities, Clarification Questions, Assumptions and Summary, using level-2 headings. Labels alone or generic boilerplate do not satisfy the checks.</p>
+</details></section>
+</div></details>
+
+<details class="step-card" id="decide">
+<summary><span>3</span> Review and decide <small id="decision-status">Waiting for analysis</small></summary>
+<div class="step-body">
+<p><strong>What to do</strong> Check the finding, supporting reports and suggested change. Add your reason, then accept the change or keep the original instructions.</p>
+<p><strong>What to look for</strong> Does the evidence support the recommendation? One failure can suggest a problem without proving a recurring pattern.</p>
+<p><strong>Done when</strong> Your decision is saved and evaluation starts automatically in Step 4.</p>
+<div id="proposal"></div>
+<form id="decision-form" hidden><label>Why this decision?<textarea name="reason" rows="2" maxlength="3000" required placeholder="One or two sentences is enough."></textarea></label><div id="decision-buttons"></div></form>
+<div id="decision-saved"></div>
+</div></details>
+
+<details class="step-card" id="compare">
+<summary><span>4</span> Compare the results <small id="comparison-status">Waiting for a decision</small></summary>
+<div class="step-body">
+<p><strong>What to do</strong> Compare the before and after results, then explain what changed.</p>
+<div id="evaluation-progress" class="operation-status" role="status" aria-live="polite" hidden></div>
+<div id="evaluation-controls"></div>
+<p>These checks use each report's first draft, before the agent revises it.</p>
+<div id="comparison"></div>
+<details><summary>Result target and scoring</summary><p>For an accepted change: at least 12 of 15 checks pass, or three more pass than before. No criterion total may decline. Keeping the original qualifies only if the baseline already passed at least 12/15 and no criterion total declines.</p><p>A qualifying result earns 50 quality points. Otherwise, quality points are 50 × passing after-checks ÷ 15. Missing checks are Not evaluated. A passing course grade needs 70 points, the required saved evidence and a qualifying result; otherwise the total is capped at 69. Partial work remains submittable.</p></details>
+<p><strong>Done when</strong> The comparison and your explanation are saved.</p>
+<form id="outcome-form" hidden>
+<label>What changed in the results, and what do you think caused it?<textarea name="explanation" rows="3" maxlength="3000" required placeholder="Use the before/after results. Unchanged results are worth explaining too."></textarea></label>
+<div class="save-row"><button id="save-outcome">Save explanation</button><span id="outcome-status" role="status" aria-live="polite"></span></div>
+</form>
+<button id="new-candidate" hidden>I revised my analyst — test a new proposal</button>
+<details id="history-disclosure"><summary>Earlier decisions</summary><div id="history"></div></details>
+</div></details>
+
+<section id="report" class="report-panel" aria-label="Saved report" hidden tabindex="-1"></section>
+<section class="step-card checklist"><h2>Before you submit</h2><p id="submission-status" role="status"></p><div id="readiness"></div>
+<p>Submit on the course page. Incomplete work can receive partial credit; submitting may consume an attempt. After grading, open your submission feedback to see the points and suggestions.</p></section>
+<details class="step-card"><summary>Need help recovering?</summary><div class="step-body"><p>After an interruption, choose Resume saved work. For a code error, share the message in Coding chat and ask for help. Completed reports stay saved.</p><p>If the result is below target, you can explain it and submit partial work, or revise your analyst to suggest a different instruction change. The baseline and earlier results stay saved.</p></div></details>
+<div id="job-controls" hidden><button id="resume" hidden>Resume saved work</button><button id="cancel" hidden>Stop safely</button></div>
+</main><footer>LoopEng · Learning Loop capstone</footer>
+</body></html>

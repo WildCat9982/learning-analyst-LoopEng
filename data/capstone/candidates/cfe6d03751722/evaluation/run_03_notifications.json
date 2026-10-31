@@ -1,0 +1,168 @@
+{
+  "id": "cfcd3235",
+  "trigger": "capstone_evaluation",
+  "ticket_key": "LEARNING",
+  "requirement_page_id": null,
+  "requirement_version": 1,
+  "model": "gpt-5.6-luna",
+  "workspace": "/home/jovyan/work/capstone/data/capstone/candidates/cfe6d03751722/evaluation/workspaces/notifications.md",
+  "requirement_doc": "REQUIREMENT: Notifications\nSend notifications by email and in the app.\nUsers can disable ordinary email notifications.\nUrgent notifications must arrive quickly.\nGroup related notifications sensibly.\nRetain unread in-app notifications for 30 days.\n",
+  "instructions": "## Procedure\nFetch the requirement using fetch_requirement. Write /analysis.md, then edit each section in order: Confirmed Facts, Ambiguities, Clarification Questions, Assumptions, Summary. Use level-2 headings and one bullet per item. Quote each ambiguous clause and explain the problem. Finish with a short summary.\n\n## Review guidance\n### Confirmed Facts\nList what the requirement tells the team to build.\n### Ambiguities\nIdentify wording that different readers could interpret differently. Keep the analysis focused and easy to read.\n### Clarification Questions\nAsk questions that would help the team proceed.\n### Assumptions\nRecord any assumptions separately.\n### Summary\nSummarize the remaining decisions in two sentences.\n\nFor every ambiguity and clarification question, identify the decision owner or authoritative source that can resolve it (for example, product, security, compliance, or an applicable policy).\n",
+  "trace": [
+    {
+      "step": 1,
+      "actor": "Agent action",
+      "action": "fetch_requirement {'ticket_key': 'UPL-310'}"
+    },
+    {
+      "step": 2,
+      "actor": "Tool",
+      "action": "fetch_requirement",
+      "detail": "REQUIREMENT: Notifications Send notifications by email and in the app. Users can disable ordinary email notifications. Urgent notifications must arrive quickly. Group related notifications sensibly. Retain unread in-app \u2026"
+    },
+    {
+      "step": 3,
+      "actor": "Agent action",
+      "action": "write_file {'file_path': '/analysis.md', 'content': '## Confirmed Facts\\n- The product must send notifications by email and within the app.\\n- Users must be able to disable ordinary email notifications.\\n- Urgent notifications must arrive quickly.\\n- Related notifications must be grouped sensibly.\\n- Unread in-app notifications must be retained for 30 days.\\n\\n## Ambiguities\\n- \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\\n- \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\\n- \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\\n- \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\\n- \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\\n\\n## Clarification Questions\\n- Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\\n- What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\\n- What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\\n- How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\\n- Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\\n- Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.\\n\\n## Assumptions\\n- Both email and in-app delivery are required, but exact routing is configurable by notification category.\\n- Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\\n- \"Quickly\" will be converted into an explicit operational SLA before implementation.\\n- Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\\n- The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.\\n\\n## Summary\\nThe requirement establishes two delivery channels, email opt-out for ordinary messages, expedited handling for urgent messages, grouping, and 30-day unread in-app retention. Implementation still needs decisions on notification taxonomy, opt-out and urgency rules, measurable delivery targets, grouping behavior, retention semantics, and compliance constraints.\\n'}"
+    },
+    {
+      "step": 4,
+      "actor": "Tool",
+      "action": "write_file",
+      "detail": "Updated file /analysis.md"
+    },
+    {
+      "step": 5,
+      "actor": "Agent action",
+      "action": "Fetched ticket **UPL-310** and wrote the structured analysis to `/analysis.md`."
+    }
+  ],
+  "messages": [
+    {
+      "type": "human",
+      "content": "The requirement is tracked as ticket UPL-310; fetch it to begin."
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "tool_calls": [
+        {
+          "name": "fetch_requirement",
+          "args": {
+            "ticket_key": "UPL-310"
+          },
+          "id": "call_fOyvjYuor9lMzHyFINyBGqX5",
+          "type": "tool_call"
+        }
+      ],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 3409,
+        "output_tokens": 21,
+        "total_tokens": 3430
+      }
+    },
+    {
+      "type": "tool",
+      "content": "REQUIREMENT: Notifications\nSend notifications by email and in the app.\nUsers can disable ordinary email notifications.\nUrgent notifications must arrive quickly.\nGroup related notifications sensibly.\nRetain unread in-app notifications for 30 days.\n",
+      "tool_call_id": "call_fOyvjYuor9lMzHyFINyBGqX5",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "tool_calls": [
+        {
+          "name": "write_file",
+          "args": {
+            "file_path": "/analysis.md",
+            "content": "## Confirmed Facts\n- The product must send notifications by email and within the app.\n- Users must be able to disable ordinary email notifications.\n- Urgent notifications must arrive quickly.\n- Related notifications must be grouped sensibly.\n- Unread in-app notifications must be retained for 30 days.\n\n## Ambiguities\n- \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\n- \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\n- \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\n- \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\n- \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\n\n## Clarification Questions\n- Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\n- What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\n- What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\n- How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\n- Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\n- Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.\n\n## Assumptions\n- Both email and in-app delivery are required, but exact routing is configurable by notification category.\n- Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\n- \"Quickly\" will be converted into an explicit operational SLA before implementation.\n- Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\n- The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.\n\n## Summary\nThe requirement establishes two delivery channels, email opt-out for ordinary messages, expedited handling for urgent messages, grouping, and 30-day unread in-app retention. Implementation still needs decisions on notification taxonomy, opt-out and urgency rules, measurable delivery targets, grouping behavior, retention semantics, and compliance constraints.\n"
+          },
+          "id": "call_9Jdna9ssdFVfZQgngZwgSR4D",
+          "type": "tool_call"
+        }
+      ],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 3487,
+        "output_tokens": 753,
+        "total_tokens": 4240
+      }
+    },
+    {
+      "type": "tool",
+      "content": "Updated file /analysis.md",
+      "tool_call_id": "call_9Jdna9ssdFVfZQgngZwgSR4D",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "Fetched ticket **UPL-310** and wrote the structured analysis to `/analysis.md`.",
+      "tool_calls": [],
+      "model_metadata": {
+        "model_name": "gpt-5.6-luna"
+      },
+      "token_usage": {
+        "input_tokens": 4256,
+        "output_tokens": 21,
+        "total_tokens": 4277
+      }
+    }
+  ],
+  "grading": [
+    {
+      "iteration": 1,
+      "result": "satisfied",
+      "explanation": "All criteria passed",
+      "criteria": [
+        {
+          "name": "completeness",
+          "passed": true,
+          "evidence": "L1: ## Confirmed Facts\nL8: ## Ambiguities\nL15: ## Clarification Questions\nL23: ## Assumptions\nL30: ## Summary",
+          "gap": ""
+        },
+        {
+          "name": "clarity",
+          "passed": true,
+          "evidence": "L9: - \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\nL10: - \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\nL11: - \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\nL12: - \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\nL13: - \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\nL16: - Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\nL17: - What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\nL18: - What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\nL19: - How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\nL20: - Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\nL21: - Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.",
+          "gap": ""
+        },
+        {
+          "name": "depth",
+          "passed": true,
+          "evidence": "L2: - The product must send notifications by email and within the app.\nL3: - Users must be able to disable ordinary email notifications.\nL4: - Urgent notifications must arrive quickly.\nL5: - Related notifications must be grouped sensibly.\nL6: - Unread in-app notifications must be retained for 30 days.\nL9: - \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\nL10: - \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\nL11: - \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\nL12: - \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\nL13: - \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\nL24: - Both email and in-app delivery are required, but exact routing is configurable by notification category.\nL25: - Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\nL26: - \"Quickly\" will be converted into an explicit operational SLA before implementation.\nL27: - Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\nL28: - The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.",
+          "gap": ""
+        }
+      ],
+      "analysis_markdown": "## Confirmed Facts\n- The product must send notifications by email and within the app.\n- Users must be able to disable ordinary email notifications.\n- Urgent notifications must arrive quickly.\n- Related notifications must be grouped sensibly.\n- Unread in-app notifications must be retained for 30 days.\n\n## Ambiguities\n- \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\n- \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\n- \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\n- \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\n- \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\n\n## Clarification Questions\n- Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\n- What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\n- What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\n- How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\n- Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\n- Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.\n\n## Assumptions\n- Both email and in-app delivery are required, but exact routing is configurable by notification category.\n- Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\n- \"Quickly\" will be converted into an explicit operational SLA before implementation.\n- Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\n- The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.\n\n## Summary\nThe requirement establishes two delivery channels, email opt-out for ordinary messages, expedited handling for urgent messages, grouping, and 30-day unread in-app retention. Implementation still needs decisions on notification taxonomy, opt-out and urgency rules, measurable delivery targets, grouping behavior, retention semantics, and compliance constraints.\n",
+      "tool_calls": [
+        {
+          "name": "read_file",
+          "args": {
+            "file_path": "/analysis.md"
+          },
+          "result": "## Confirmed Facts\n- The product must send notifications by email and within the app.\n- Users must be able to disable ordinary email notifications.\n- Urgent notifications must arrive quickly.\n- Related notifications must be grouped sensibly.\n- Unread in-app notifications must be retained for 30 days.\n\n## Ambiguities\n- \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\n- \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\n- \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\n- \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\n- \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\n\n## Clarification Questions\n- Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\n- What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\n- What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\n- How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\n- Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\n- Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.\n\n## Assumptions\n- Both email and in-app delivery are required, but exact routing is configurable by notification category.\n- Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\n- \"Quickly\" will be converted into an explicit operational SLA before implementation.\n- Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\n- The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.\n\n## Summary\nThe requirement establishes two delivery channels, email opt-out for ordinary messages, expedited handling for urgent messages, grouping, and 30-day unread in-app retention. Implementation still needs decisions on notification taxonomy, opt-out and urgency rules, measurable delivery targets, grouping behavior, retention semantics, and compliance constraints.\n"
+        }
+      ]
+    }
+  ],
+  "analysis_markdown": "## Confirmed Facts\n- The product must send notifications by email and within the app.\n- Users must be able to disable ordinary email notifications.\n- Urgent notifications must arrive quickly.\n- Related notifications must be grouped sensibly.\n- Unread in-app notifications must be retained for 30 days.\n\n## Ambiguities\n- \"Send notifications by email and in the app.\" It is unclear which notification types use which channels, whether delivery is simultaneous or configurable, and whether users can control in-app notifications. Decision owner: Product; security/compliance may constrain channel use.\n- \"Users can disable ordinary email notifications.\" \"Ordinary\" is undefined, and it is unclear whether disabling applies to all non-urgent email, selected categories, or individual messages; it is also unclear whether urgent email is mandatory. Decision owner: Product, with Compliance/Security for legally or operationally required messages.\n- \"Urgent notifications must arrive quickly.\" \"Urgent\" lacks criteria, and \"quickly\" lacks a measurable delivery target, success rate, retry policy, and treatment of provider or device failures. Decision owner: Product and SRE/Operations.\n- \"Group related notifications sensibly.\" The grouping rules, grouping window, user experience, and whether grouping applies to email, in-app notifications, or both are unspecified. Decision owner: Product and UX.\n- \"Retain unread in-app notifications for 30 days.\" It is unclear whether retention is exactly 30 days from creation or last update, what happens when a notification is read, whether read notifications have a separate retention period, and whether legal holds or audit requirements override deletion. Decision owner: Product, with Compliance/Legal.\n\n## Clarification Questions\n- Which notification categories and events are in scope, and which channels should each category use? Decision owner: Product.\n- What qualifies as ordinary versus urgent, and may users disable or otherwise control urgent notifications? Decision owner: Product, with Compliance/Security for mandatory communications.\n- What measurable delivery SLA defines \"quickly\" for urgent notifications, including acknowledgement, retries, and provider outage handling? Decision owner: Product and SRE/Operations.\n- How should related notifications be identified and grouped, over what time window, and separately for email versus in-app delivery? Decision owner: Product and UX.\n- Does the 30-day period begin when an in-app notification is created, and should read notifications be deleted immediately, retained separately, or handled another way? Decision owner: Product.\n- Are there privacy, consent, accessibility, localization, or regulatory requirements governing notification content, channel selection, opt-out behavior, or retention? Decision owner: Compliance/Legal and Security.\n\n## Assumptions\n- Both email and in-app delivery are required, but exact routing is configurable by notification category.\n- Users may opt out of ordinary email but not messages that Product or Compliance designates as mandatory or urgent.\n- \"Quickly\" will be converted into an explicit operational SLA before implementation.\n- Grouping will be implemented as a user-visible aggregation rather than silent suppression of individual events.\n- The 30-day rule applies to unread in-app records measured from their creation time, subject to approved legal or compliance exceptions.\n\n## Summary\nThe requirement establishes two delivery channels, email opt-out for ordinary messages, expedited handling for urgent messages, grouping, and 30-day unread in-app retention. Implementation still needs decisions on notification taxonomy, opt-out and urgency rules, measurable delivery targets, grouping behavior, retention semantics, and compliance constraints.\n",
+  "status": "satisfied",
+  "turns": 3,
+  "counts": {
+    "Confirmed Facts": 5,
+    "Ambiguities": 5,
+    "Clarification Questions": 6,
+    "Assumptions": 5
+  },
+  "started_at": "2026-10-31T10:56:23.948333+00:00",
+  "finished_at": "2026-10-31T10:56:38.957199+00:00",
+  "duration_ms": 15009,
+  "execution_mode": "live",
+  "label": "evaluation",
+  "doc_name": "notifications.md"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "4bfe3fb89e9b415091b06330161521d0",
+  "label": "capstone-cfe6d03751722",
+  "status": "completed",
+  "completed": 5,
+  "total": 5,
+  "error": null,
+  "created_at": "2026-10-31T10:39:51.076212+00:00",
+  "metadata": {
+    "operation": "capstone_analysis",
+    "candidate": "cfe6d03751722"
+  },
+  "updated_at": "2026-10-31T10:40:15.896405+00:00"
+}

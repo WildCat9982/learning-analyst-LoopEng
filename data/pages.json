@@ -1,0 +1,16 @@
+[
+  {
+    "id": "page-req-avatar-upload",
+    "kind": "requirement",
+    "title": "Profile Avatar Upload \u2014 Requirements",
+    "linked_ticket": null,
+    "versions": [
+      {
+        "n": 1,
+        "author": "Avery (Product Manager)",
+        "timestamp": "2026-10-31T10:26:47.109061+00:00",
+        "body": "Users shall be able to upload an avatar image to their profile.\nUploaded images must be stored securely.\nThe feature should accept all common image formats."
+      }
+    ]
+  }
+]
