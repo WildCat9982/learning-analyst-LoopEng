@@ -2,6 +2,8 @@
 
 Build the analyst that studies five requirement reviews and suggests better task-agent instructions. The app handles fetching, report writing, verification, saving and automatic evaluation after your decision. Open App Preview for the four activity cards. Optional starting prompts are in the course instructions.
 
+![App home page](docs/images/screenshot.png)
+
 The five requirements are Avatar Upload, Password Reset, Notifications, Team Invitations and Report Export. View them in Step 2. First-draft quality uses each report’s first draft, before the agent revises it. Keep or reject is a valid decision; a weak unchanged baseline does not earn improvement credit through random variation. Save your own decision and outcome explanations. Use your own prompts and supported ideas; Live results can differ. Default review limits are 3 revisions and 40 model calls, separate from course submission attempts.
 
 ## Maintainer commands
