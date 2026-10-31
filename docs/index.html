@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LoopEng Learning Loop</title>
+<meta name="description" content="An AI learning analyst that studies saved requirement reviews and suggests better task-agent instructions.">
+<style>
+:root{--ink:#17211c;--paper:#f4f2ec;--card:#fdfcf7;--green:#173d2b;--soft:#dce9d8;--acid:#d5f35b;--orange:#f07d45;--line:#c9cbc0;--muted:#536158}
+@media (prefers-color-scheme:dark){:root{--ink:#e8ebe4;--paper:#121815;--card:#1a221e;--soft:#22342a;--line:#34403a;--muted:#9aa89e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Arial,Helvetica,sans-serif}
+a{color:inherit}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px max(16px,5vw);border-bottom:1px solid var(--line);font-size:14px}
+header strong{font-weight:700}
+header a{text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:6px 12px}
+header a:hover{border-color:var(--ink)}
+.hero{background:var(--green);color:#f6f2e7;padding:72px max(16px,5vw) 64px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-140px;background:var(--acid);opacity:.9}
+.hero>*{position:relative;z-index:1;max-width:760px}
+.eyebrow{font-size:11px;letter-spacing:.17em;font-weight:700;color:var(--orange);margin:0 0 16px;text-transform:uppercase}
+.hero .eyebrow{color:var(--acid)}
+h1{font:700 clamp(38px,7vw,72px)/1 Georgia,serif;letter-spacing:-.04em;margin:0}
+.hero p.lede{font-size:18px;color:#d7ddd3;margin:24px 0 0}
+main{max-width:980px;margin:0 auto;padding:0 16px}
+section{padding:56px 0 8px}
+h2{font:700 clamp(26px,4vw,36px)/1.15 Georgia,serif;letter-spacing:-.02em;margin:0 0 20px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.steps li,.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.num{display:inline-grid;place-items:center;width:28px;height:28px;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:14px;margin-bottom:10px}
+.steps h3,.card h3{margin:0 0 6px;font-size:17px}
+.steps p,.card p{margin:0;color:var(--muted);font-size:15px}
+figure{margin:0}
+figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;display:block}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.reqs{display:grid;gap:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px}
+summary{cursor:pointer;padding:14px 18px;font-weight:700}
+details ul{margin:0;padding:0 18px 16px 38px;color:var(--muted)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.big{font:700 44px/1 Georgia,serif;margin:4px 0 8px}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--orange)}
+.total .bar i{background:var(--green)}
+@media (prefers-color-scheme:dark){.total .bar i{background:var(--acid)}}
+pre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto;font-size:14px;line-height:1.5}
+code{font-family:Consolas,Menlo,monospace}
+.note{color:var(--muted);font-size:14px}
+footer{max-width:980px;margin:56px auto 0;padding:24px 16px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <strong>LoopEng AI Coding Lab</strong>
+  <a href="https://github.com/WildCat9982/learning-analyst-LoopEng">View on GitHub</a>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Learn from the last run. Improve the next one.</p>
+  <h1>Learning Loop: an AI analyst that improves agent instructions.</h1>
+  <p class="lede">A task agent reviews five product requirements. A learning analyst studies the saved reports, traces and feedback, finds recurring weaknesses, and proposes better instructions. You decide whether to accept the change, and the app measures what happened.</p>
+</div>
+
+<main>
+
+<section id="how">
+  <p class="eyebrow">How it works</p>
+  <h2>Four steps</h2>
+  <ol class="steps">
+    <li><span class="num">1</span><h3>Build</h3><p>Write the analyst in <code>app/learning_agent.py</code> with a coding assistant.</p></li>
+    <li><span class="num">2</span><h3>Analyse</h3><p>The task agent reviews five requirements, then the analyst looks for patterns across its reports.</p></li>
+    <li><span class="num">3</span><h3>Decide</h3><p>Check the evidence behind the suggested instruction change, then accept it or keep the original.</p></li>
+    <li><span class="num">4</span><h3>Compare</h3><p>The app re-runs the reviews and compares the results against the baseline.</p></li>
+  </ol>
+</section>
+
+<section id="preview">
+  <p class="eyebrow">App preview</p>
+  <h2>The app</h2>
+  <figure>
+    <img src="images/screenshot.png" alt="Learning Loop home page showing step cards for Build your analyst and Run the analysis" width="934" height="876" loading="lazy">
+    <figcaption>The Flask app runs locally on port 4000. This page is a static overview, so the app itself is not live here.</figcaption>
+  </figure>
+</section>
+
+<section id="requirements">
+  <p class="eyebrow">Inputs</p>
+  <h2>The five requirements</h2>
+  <p class="note">Each one is deliberately vague. The agent has to separate confirmed facts from ambiguities instead of inventing answers.</p>
+  <div class="reqs">
+    <details><summary>Avatar Upload</summary><ul>
+      <li>Users can upload one avatar image to their profile.</li>
+      <li>An uploaded image must be smaller than 2 MB.</li>
+      <li>Images must be stored securely.</li>
+      <li>Accept all common image formats.</li>
+      <li>Replacing an avatar should be easy.</li></ul></details>
+    <details><summary>Password Reset</summary><ul>
+      <li>Users can request a password-reset link by email.</li>
+      <li>A reset link can be used only once.</li>
+      <li>Links must expire after a reasonable time.</li>
+      <li>The existing password remains valid until the reset succeeds.</li>
+      <li>Handle repeated requests appropriately.</li></ul></details>
+    <details><summary>Notifications</summary><ul>
+      <li>Send notifications by email and in the app.</li>
+      <li>Users can disable ordinary email notifications.</li>
+      <li>Urgent notifications must arrive quickly.</li>
+      <li>Group related notifications sensibly.</li>
+      <li>Retain unread in-app notifications for 30 days.</li></ul></details>
+    <details><summary>Team Invitations</summary><ul>
+      <li>Workspace owners can invite someone to join their workspace by email.</li>
+      <li>Accepting an invitation adds the person to the workspace as a member.</li>
+      <li>An invitation link can be accepted only once and expires after seven days.</li>
+      <li>Owners can cancel a pending invitation.</li>
+      <li>Show owners which invitations are still waiting for a response.</li>
+      <li>Handle invitations to existing members and repeated invitations appropriately.</li></ul></details>
+    <details><summary>Report Export</summary><ul>
+      <li>Users can download the records shown in a report as a CSV file.</li>
+      <li>The export must respect the user’s current filters and access permissions.</li>
+      <li>Include a header row with the column names.</li>
+      <li>Large exports should run in the background so the user can continue working.</li>
+      <li>Notify the user when the file is ready.</li>
+      <li>Download links should remain available for a reasonable time.</li>
+      <li>If an export fails, explain what happened and let the user try again.</li></ul></details>
+  </div>
+</section>
+
+<section id="baseline">
+  <p class="eyebrow">Baseline</p>
+  <h2>How the original instructions scored</h2>
+  <p class="note">Each of the five first-draft reports is checked on three criteria, for 15 checks in total.</p>
+  <div class="score">
+    <div class="card total"><h3>Overall</h3><p class="big">12 / 15</p><div class="bar"><i style="width:80%"></i></div></div>
+    <div class="card"><h3>Completeness</h3><p class="big">5 / 5</p><div class="bar"><i style="width:100%"></i></div><p>All clauses covered in five ordered sections.</p></div>
+    <div class="card"><h3>Clarity</h3><p class="big">3 / 5</p><div class="bar"><i style="width:60%"></i></div><p>Questions name the clause and ask for a concrete decision.</p></div>
+    <div class="card"><h3>Depth</h3><p class="big">4 / 5</p><div class="bar"><i style="width:80%"></i></div><p>No invented facts; each ambiguity has a concrete failure scenario.</p></div>
+  </div>
+  <p class="note">Clarity is the weakest criterion, so the analyst should focus there. Keeping the original instructions is still a valid decision when the evidence for a recurring pattern is weak.</p>
+</section>
+
+<section id="run">
+  <p class="eyebrow">Run it yourself</p>
+  <h2>Running it locally</h2>
+  <p>You need Python 3.11+ and an OpenAI-compatible API key in a local <code>.env</code> file.</p>
+<pre><code>git clone https://github.com/WildCat9982/learning-analyst-LoopEng.git
+cd learning-analyst-LoopEng
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt   # Windows: .venv\Scripts\pip
+.venv/bin/python scripts/server.py start    # http://localhost:4000</code></pre>
+  <p class="note">Built with Flask, LangGraph and deepagents. Run the tests with <code>.venv/bin/python -m pytest -q tests/</code>.</p>
+</section>
+
+</main>
+
+<footer>LoopEng AI Coding Lab · Learning Loop · <a href="https://github.com/WildCat9982/learning-analyst-LoopEng">Source on GitHub</a></footer>
+
+</body>
+</html>
